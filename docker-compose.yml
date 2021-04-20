@@ -2,10 +2,10 @@ version: '3'
 
 services:
   web:
-    build: ./web
+    build: ./bsoft
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/web_django
+      - .:/bsoft
     ports:
       - '8000:8000'
     depends_on:
@@ -21,4 +21,4 @@ services:
       MYSQL_ROOT_PASSWORD: 'password'
     restart: always
     volumes:
-      - ./db_django:/var/lib/mysql
+      - ./bsoft:/var/lib/mysql
