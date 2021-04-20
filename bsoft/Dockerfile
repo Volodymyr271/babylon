@@ -1,13 +1,7 @@
-FROM python
-
-RUN apt-get update && apt-get upgrade -y && apt-get autoremove && apt-get autoclean
-
-RUN mkdir /site
-COPY . /site/
-WORKDIR /site
-
-RUN pip install --upgrade pip
-RUN pip install django
-
-ENTRYPOINT ["python","manage.py"]
-CMD ["runserver","0.0.0.0:8000"]
+FROM python:3.8
+ENV PYTHONUNBUFFERED 1
+RUN mkdir /web_django
+WORKDIR /web_django
+COPY requirements.txt /web_django/
+RUN pip install --upgrade pip && pip install -r requirements.txt
+ADD . /web_django/
