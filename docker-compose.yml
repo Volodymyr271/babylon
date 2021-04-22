@@ -3,6 +3,7 @@ version: '3'
 services:
   web:
     build: ./bsoft
+    image: yarandocker/babylon-django
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/bsoft
